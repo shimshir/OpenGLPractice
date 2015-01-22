@@ -3,6 +3,8 @@
 #include <ctime>
 #include <cmath>
 #include <cstdlib>
+#include <vector>
+
 #include "display.h"
 #include "shader.h"
 #include "model.h"
@@ -21,16 +23,15 @@ int main(int argc, char *argv[])
     shader.createAndCompile();
     shader.linkAndUse();
 
+    std::vector<glm::vec3> positions = {glm::vec3(-0.5f, 0.5f, 0.0f),
+                                        glm::vec3(0.5f, 0.5f, 0.0f),
+                                        glm::vec3(0.5f, -0.5f, 0.0f),
+                                        glm::vec3(-0.5f, -0.5f, 0.0f)};
 
-    Model t1Model;
-    t1Model.positions = {glm::vec3(-0.5f, 0.5f, 0.0f),
-                         glm::vec3(0.5f, 0.5f, 0.0f),
-                         glm::vec3(0.5f, -0.5f, 0.0f),
-                         glm::vec3(-0.5f, -0.5f, 0.0f)};
+    std::vector<GLuint> indices = {3, 2, 0};
 
-    t1Model.indices = {3, 2, 0};
-
-    Mesh t1Mesh(t1Model);
+    Model model(positions, {glm::vec2(0.0, 0.0)}, indices);
+    Mesh mesh(model);
 
     SDL_Event windowEvent;
     Uint32 lastTime = SDL_GetTicks();
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
                 break;
         }
         display.Clear(0.0f, 0.0f, 0.0f, 1.0f);
-        t1Mesh.draw();
+        mesh.draw();
         display.SwapBuffers();
         frameNumber++;
         if (frameNumber > 1000)

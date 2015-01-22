@@ -57,6 +57,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mesh.cpp" />
 		<Unit filename="mesh.h" />
+		<Unit filename="model.cpp" />
+		<Unit filename="model.h" />
 		<Unit filename="shader.cpp" />
 		<Unit filename="shader.h" />
 		<Extensions>
