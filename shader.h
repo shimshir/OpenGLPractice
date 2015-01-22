@@ -11,7 +11,7 @@ class Shader
 {
 public:
     Shader() {m_program = glCreateProgram();};
-    void add(ShaderType type, std::string shaderFilePath);
+    void addShaderFromFile(ShaderType type, std::string shaderFilePath);
     void remove(ShaderType type, int);
     void remove(ShaderType type, std::string shaderFilePath);
     void createAndCompile();

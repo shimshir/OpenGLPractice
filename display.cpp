@@ -1,4 +1,5 @@
 #include "display.h"
+#include <SDL.h>
 
 void Display::init()
 {

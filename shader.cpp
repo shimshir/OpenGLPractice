@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-void Shader::add(ShaderType type, std::string shaderFilePath)
+void Shader::addShaderFromFile(ShaderType type, std::string shaderFilePath)
 {
     m_shaderFilePaths[type].push_back(shaderFilePath);
 }
@@ -42,11 +42,16 @@ void Shader::createAndCompile()
         glCompileShader(shader);
         glAttachShader(m_program, shader);
 
+        glBindAttribLocation(m_program, 0, "position");
+        glBindAttribLocation(m_program, 1, "texCoord");
+        glBindAttribLocation(m_program, 2, "normal");
+
         for (unsigned i = 0; i < (iter->second).size(); i++) {
             delete sources[i];
         }
         delete sources;
     }
+
 }
 
 void Shader::linkAndUse()

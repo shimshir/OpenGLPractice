@@ -7,17 +7,18 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Graphics" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/OpenGLPractice" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="../Graphics" />
+					<Add directory="../OpenGLPractice" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Graphics" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/OpenGLPractice" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -25,6 +26,7 @@
 					<Add option="-Os" />
 					<Add option="-std=c++11" />
 					<Add directory="../Graphics" />
+					<Add directory="../OpenGLPractice" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -37,6 +39,7 @@
 			<Add option="-fexceptions" />
 			<Add directory="libs_32/SDL2/include" />
 			<Add directory="libs_32/glew/include" />
+			<Add directory="libs_32/glm/include" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32" />
@@ -44,9 +47,16 @@
 			<Add directory="libs_32/SDL2/lib" />
 			<Add directory="libs_32/glew/lib" />
 		</Linker>
+		<ExtraCommands>
+			<Add after='cmd /c copy &quot;.\libs_32\SDL2\bin&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
+			<Add after='cmd /c copy &quot;.\libs_32\glew\bin&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
+			<Add after='cmd /c xcopy &quot;.\res&quot; &quot;$(TARGET_OUTPUT_DIR)res&quot; /E /Y /I' />
+		</ExtraCommands>
 		<Unit filename="display.cpp" />
 		<Unit filename="display.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="mesh.cpp" />
+		<Unit filename="mesh.h" />
 		<Unit filename="shader.cpp" />
 		<Unit filename="shader.h" />
 		<Extensions>
