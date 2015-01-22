@@ -1,2 +1,2 @@
 # OpenGLPractice
-Proctice project using OpenGL with SDL2.
+Code::Blocks project for OpenGL and SDL2 practice.
